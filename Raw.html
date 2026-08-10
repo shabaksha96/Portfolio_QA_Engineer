@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Shabeer Baksha BS — SDET / Software Quality Engineer portfolio">
+<title>Shabeer Baksha BS | SDET Portfolio</title>
+
+<style>
+:root{
+  --bg:#060a09;
+  --bg2:#0b1110;
+  --panel:#0d1513;
+  --panel2:#101a17;
+  --line:rgba(190,255,0,.16);
+  --green:#b7ff00;
+  --green2:#8cff00;
+  --white:#f5f7f4;
+  --muted:#aab2ad;
+  --faded:#78817c;
+  --shadow:0 20px 70px rgba(0,0,0,.45);
+  --radius:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 80% 10%,rgba(183,255,0,.08),transparent 25%),
+    radial-gradient(circle at 10% 60%,rgba(183,255,0,.035),transparent 28%),
+    var(--bg);
+  color:var(--white);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;
+  background-image:linear-gradient(rgba(255,255,255,.7) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.7) 1px,transparent 1px);
+  background-size:45px 45px;z-index:-2;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1180px,92%);margin:auto}
+section{padding:105px 0;position:relative}
+.section-kicker{
+  color:var(--green);font-size:.75rem;font-weight:800;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:12px;
+}
+.section-title{font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;letter-spacing:-.045em;margin-bottom:20px}
+.section-title span{color:var(--green)}
+.section-copy{max-width:780px;color:var(--muted);font-size:1.05rem}
+.neon{color:var(--green)}
+.fade-white{color:#d8ddd9}
+.mono{font-family:"SFMono-Regular",Consolas,monospace}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(6,10,9,.72);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+.nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:900;font-size:1.2rem;letter-spacing:-.04em}
+.brand b{color:var(--green)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:#b7beb9;font-size:.84rem;transition:.25s}
+.nav-links a:hover,.nav-links a.active{color:var(--green)}
+.nav-cta{padding:9px 15px;border:1px solid var(--green);border-radius:999px;color:var(--green)!important}
+.menu{display:none;background:none;border:0;color:var(--white);font-size:1.5rem}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;align-items:center;padding-top:120px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border-radius:999px;
+  background:rgba(183,255,0,.07);border:1px solid var(--line);color:#dce6dc;
+  font-size:.78rem;margin-bottom:22px
+}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 16px var(--green);animation:pulse 1.8s infinite}
+.hero h1{font-size:clamp(3.4rem,8vw,7.2rem);line-height:.88;letter-spacing:-.07em;margin-bottom:24px}
+.hero h1 .green{color:var(--green)}
+.hero-sub{font-size:clamp(1.2rem,2.5vw,1.65rem);color:#dce1dd;max-width:720px;margin-bottom:16px}
+.hero-desc{color:var(--muted);max-width:680px;font-size:1rem;margin-bottom:30px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;
+  border-radius:12px;border:1px solid rgba(255,255,255,.12);transition:.25s;
+  cursor:pointer;background:transparent;color:var(--white)
+}
+.btn:hover{transform:translateY(-3px);border-color:var(--green);box-shadow:0 10px 30px rgba(183,255,0,.1)}
+.btn-primary{background:var(--green);color:#071000;border-color:var(--green);font-weight:850}
+.btn-primary:hover{background:#c7ff38}
+.hero-meta{display:flex;gap:25px;flex-wrap:wrap;margin-top:32px;color:var(--faded);font-size:.8rem}
+.hero-meta strong{display:block;color:var(--white);font-size:1.15rem}
+.photo-wrap{position:relative;justify-self:end;width:min(410px,90vw)}
+.photo-glow{
+  position:absolute;inset:8%;background:var(--green);filter:blur(90px);opacity:.13;
+  border-radius:50%;animation:float 5s ease-in-out infinite
+}
+.profile{
+  position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;
+  border-radius:28px;border:1px solid rgba(183,255,0,.28);box-shadow:var(--shadow);
+  filter:saturate(.9) contrast(1.03)
+}
+.photo-chip{
+  position:absolute;right:-18px;bottom:26px;background:rgba(11,17,16,.9);
+  border:1px solid var(--line);padding:14px 16px;border-radius:16px;backdrop-filter:blur(14px);
+  box-shadow:var(--shadow)
+}
+.photo-chip span{display:block;color:var(--green);font-weight:900}
+.photo-chip small{color:var(--muted)}
+
+/* TICKER / AUTO TILES */
+.ticker-wrap{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(183,255,0,.025)}
+.ticker{display:flex;width:max-content;animation:marquee 28s linear infinite}
+.ticker-item{padding:14px 26px;color:#b7c0ba;font-size:.8rem;border-right:1px solid var(--line)}
+.ticker-item b{color:var(--green)}
+.auto-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.auto-card{
+  min-height:165px;padding:22px;background:linear-gradient(145deg,var(--panel),#08100e);
+  border:1px solid rgba(255,255,255,.07);border-radius:18px;transition:.35s;position:relative;overflow:hidden
+}
+.auto-card:after{content:"";position:absolute;width:120px;height:120px;background:var(--green);opacity:0;filter:blur(55px);right:-40px;bottom:-40px;transition:.35s}
+.auto-card:hover{transform:translateY(-8px);border-color:var(--green);box-shadow:0 18px 45px rgba(183,255,0,.08)}
+.auto-card:hover:after{opacity:.1}
+.auto-card.active{border-color:rgba(183,255,0,.65);box-shadow:0 0 0 1px rgba(183,255,0,.15),0 18px 45px rgba(183,255,0,.08)}
+.auto-card .icon{font-size:1.5rem;margin-bottom:12px}
+.auto-card h3{font-size:1.05rem;margin-bottom:7px}
+.auto-card p{color:var(--muted);font-size:.83rem}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:55px}
+.stat{background:#09100e;padding:24px 12px;text-align:center}
+.stat strong{display:block;font-size:1.8rem;color:var(--green);letter-spacing:-.04em}
+.stat span{color:var(--faded);font-size:.72rem}
+
+/* CARDS */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.card{
+  background:linear-gradient(145deg,rgba(15,24,21,.96),rgba(8,13,12,.96));
+  border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px;
+  transition:.35s;position:relative;overflow:hidden
+}
+.card:hover{transform:translateY(-7px);border-color:rgba(183,255,0,.5);box-shadow:var(--shadow)}
+.card h3{font-size:1.35rem;margin-bottom:12px}
+.card p,.card li{color:var(--muted);font-size:.9rem}
+.card ul{padding-left:19px}
+.card .label{color:var(--green);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+
+/* EXPERIENCE TIMELINE */
+.timeline{margin-top:50px;position:relative}
+.timeline:before{content:"";position:absolute;left:15px;top:0;bottom:0;width:1px;background:linear-gradient(var(--green),rgba(183,255,0,.05))}
+.timeline-item{position:relative;padding-left:58px;margin-bottom:50px}
+.timeline-dot{position:absolute;left:8px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px var(--bg),0 0 20px var(--green)}
+.timeline-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.timeline-company{font-size:1.8rem;font-weight:850}
+.timeline-role{color:#c6cdc8;margin:2px 0 13px}
+.timeline-date{color:var(--green);font-size:.75rem;font-weight:800;white-space:nowrap}
+.timeline-desc{color:var(--muted);max-width:850px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.tag{font-size:.7rem;padding:5px 9px;border-radius:999px;color:#cbd3ce;background:#121b18;border:1px solid rgba(255,255,255,.08);transition:.2s}
+.tag:hover{color:#071000;background:var(--green);border-color:var(--green)}
+
+/* PROJECTS */
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:45px}
+.project{min-height:390px;display:flex;flex-direction:column;justify-content:space-between}
+.project-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.project-num{font-size:.72rem;color:var(--green);font-weight:900}
+.project-badge{font-size:.65rem;color:#d7ddd9;padding:5px 8px;border:1px solid var(--line);border-radius:999px}
+.project h3{font-size:1.8rem;letter-spacing:-.03em}
+.project .company{color:var(--green);font-size:.82rem;margin:4px 0 15px}
+.project p{color:var(--muted);font-size:.87rem}
+.details-btn{margin-top:22px;width:max-content}
+
+/* SKILLS */
+.skill-filter{display:flex;gap:8px;flex-wrap:wrap;margin:35px 0 22px}
+.filter{
+  padding:8px 13px;border-radius:999px;background:transparent;color:#9fa8a2;
+  border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:.2s;font-size:.78rem
+}
+.filter.active,.filter:hover{color:#071000;background:var(--green);border-color:var(--green)}
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.skill{padding:20px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:#0b1311;transition:.25s}
+.skill:hover{border-color:var(--green);transform:translateY(-5px)}
+.skill h4{margin-bottom:8px}
+.skill p{color:var(--muted);font-size:.8rem}
+.skill[data-category]{display:block}
+
+/* FRAMEWORK */
+.architecture{
+  margin-top:40px;background:#050908;border:1px solid rgba(183,255,0,.16);
+  border-radius:20px;padding:25px;overflow:auto;box-shadow:inset 0 0 70px rgba(183,255,0,.025)
+}
+pre{color:#c7d0ca;font: .82rem/1.8 "SFMono-Regular",Consolas,monospace}
+pre .g{color:var(--green)}
+
+/* IMPACT */
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:45px}
+.impact{padding:28px;text-align:center;background:#0b1311;border:1px solid rgba(255,255,255,.08);border-radius:18px}
+.impact strong{display:block;color:var(--green);font-size:2.3rem;letter-spacing:-.06em}
+.impact span{color:var(--faded);font-size:.75rem}
+.disclaimer{margin-top:20px;color:#6f7974;font-size:.72rem}
+
+/* LEADERSHIP + AWARDS */
+.icon-list{display:grid;gap:10px;margin-top:18px}
+.icon-list div{display:flex;gap:10px;color:var(--muted);font-size:.87rem}
+.icon-list b{color:var(--green)}
+.award-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:40px}
+.award{padding:24px;border:1px solid rgba(255,255,255,.08);border-radius:17px;background:#0b1311}
+.award:hover{border-color:var(--green)}
+.award .year{color:var(--green);font-size:.7rem;font-weight:800}
+.award h3{margin:5px 0}
+.award p{color:var(--muted);font-size:.82rem}
+
+/* ROADMAP */
+.roadmap{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:40px}
+.road{padding:20px;text-align:center;border:1px solid rgba(255,255,255,.08);background:#0b1311;border-radius:15px}
+.road span{display:block;color:var(--green);font-weight:900;font-size:.75rem;margin-bottom:8px}
+.road h4{font-size:.95rem}
+.road p{font-size:.72rem;color:var(--muted);margin-top:5px}
+
+/* CONTACT */
+.contact-box{
+  text-align:center;padding:60px 25px;border:1px solid var(--line);border-radius:28px;
+  background:radial-gradient(circle at 50% 0,rgba(183,255,0,.08),transparent 45%),#0b1311
+}
+.contact-box h2{font-size:clamp(2.3rem,6vw,4.5rem);line-height:1}
+.contact-box p{color:var(--muted);max-width:620px;margin:18px auto 28px}
+.socials{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.social{padding:11px 16px;border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#cdd5d0;transition:.25s}
+.social:hover{color:#071000;background:var(--green);border-color:var(--green);transform:translateY(-3px)}
+footer{padding:30px 0;text-align:center;color:#626c67;font-size:.72rem;border-top:1px solid rgba(255,255,255,.06)}
+
+/* MODAL / TOOLTIP */
+.modal{
+  position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);
+  display:none;align-items:center;justify-content:center;padding:20px;z-index:200
+}
+.modal.show{display:flex;animation:fadeIn .2s ease}
+.modal-box{
+  width:min(760px,100%);max-height:85vh;overflow:auto;background:#0b1311;
+  border:1px solid rgba(183,255,0,.35);border-radius:22px;padding:30px;box-shadow:0 30px 100px #000
+}
+.modal-head{display:flex;justify-content:space-between;gap:20px}
+.close{background:none;border:0;color:#9da7a1;font-size:1.5rem;cursor:pointer}
+.close:hover{color:var(--green)}
+.modal-box h2{font-size:2rem;margin:5px 0 14px}
+.modal-box .modal-content{color:var(--muted);font-size:.9rem}
+.modal-content ul{padding-left:20px;margin:12px 0}
+.modal-content li{margin:5px 0}
+.modal-content strong{color:#e9eee9}
+.hover-tip{
+  position:fixed;z-index:300;pointer-events:none;display:none;max-width:280px;
+  padding:11px 13px;border-radius:12px;background:#0d1714;border:1px solid var(--green);
+  color:#dbe3de;font-size:.75rem;box-shadow:0 15px 45px #000
+}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* KEYFRAMES */
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* MOBILE */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:45px}
+  .photo-wrap{justify-self:start;width:min(330px,85vw)}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .auto-grid,.project-grid,.skill-grid{grid-template-columns:1fr 1fr}
+  .impact-grid{grid-template-columns:1fr 1fr}
+  .roadmap{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  .nav-links{display:none;position:absolute;top:74px;left:0;right:0;background:#070c0a;border-bottom:1px solid var(--line);padding:20px;flex-direction:column;align-items:flex-start}
+  .nav-links.open{display:flex}
+  .menu{display:block}
+  .nav-cta{border:0;padding:0}
+  .stats{grid-template-columns:1fr 1fr}
+  .grid-2,.project-grid,.skill-grid,.award-grid,.auto-grid,.impact-grid,.roadmap{grid-template-columns:1fr}
+  .timeline-head{display:block}
+  .timeline-date{margin-top:5px}
+  .hero h1{font-size:clamp(3.2rem,17vw,5rem)}
+  section{padding:80px 0}
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="brand">SB<span>.</span></a>
+    <button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#framework">Framework</a>
+      <a href="#impact">Impact</a>
+      <a href="#contact" class="nav-cta">Let's Connect</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="hero-badge"><span class="dot"></span> Open to SDET / Quality Engineering opportunities</div>
+      <h1>Shabeer<br><span class="green">Baksha BS.</span></h1>
+      <div class="hero-sub">SDET • Software Quality Engineer</div>
+      <p class="hero-desc">
+        7.5+ years of QA experience across manual testing, UI automation,
+        API automation, product quality, framework development and end-to-end testing.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">Explore My Work ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/shabeer-baksha-bs-1904a8164" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="https://github.com/shabaksha96" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>TCS</strong>Current • Citi</div>
+        <div><strong>Playwright</strong>TypeScript automation</div>
+        <div><strong>Product QA</strong>Fire TV experience</div>
+      </div>
+    </div>
+
+    <div class="photo-wrap reveal">
+      <div class="photo-glow"></div>
+      <img class="profile" src="profile-photo.jpeg" alt="Shabeer Baksha BS professional profile photo">
+      <div class="photo-chip">
+        <span>QUALITY × AUTOMATION</span>
+        <small>Building reliable software</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <div class="ticker-item"><b>PLAYWRIGHT</b> · TypeScript</div>
+    <div class="ticker-item"><b>SELENIUM</b> · Java</div>
+    <div class="ticker-item"><b>API</b> · REST Assured</div>
+    <div class="ticker-item"><b>BDD</b> · Cucumber</div>
+    <div class="ticker-item"><b>FRAMEWORKS</b> · POM · Hybrid</div>
+    <div class="ticker-item"><b>CI/CD</b> · GitHub · Lightspeed</div>
+    <div class="ticker-item"><b>QUALITY</b> · E2E · Regression · UAT</div>
+    <div class="ticker-item"><b>PRODUCT</b> · Fire TV · Banking</div>
+    <div class="ticker-item"><b>PLAYWRIGHT</b> · TypeScript</div>
+    <div class="ticker-item"><b>SELENIUM</b> · Java</div>
+    <div class="ticker-item"><b>API</b> · REST Assured</div>
+    <div class="ticker-item"><b>BDD</b> · Cucumber</div>
+    <div class="ticker-item"><b>FRAMEWORKS</b> · POM · Hybrid</div>
+    <div class="ticker-item"><b>CI/CD</b> · GitHub · Lightspeed</div>
+    <div class="ticker-item"><b>QUALITY</b> · E2E · Regression · UAT</div>
+    <div class="ticker-item"><b>PRODUCT</b> · Fire TV · Banking</div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="section-kicker reveal">01 / About</div>
+    <h2 class="section-title reveal">Quality is more than <span>finding bugs.</span></h2>
+    <div class="grid-2">
+      <div class="card reveal">
+        <h3>My Journey</h3>
+        <p>
+          I am a Software Quality professional with 7.5+ years of QA experience,
+          spanning manual testing, UI automation, API automation, framework development,
+          product testing and quality ownership.
+        </p><br>
+        <p>
+          My career evolved from manual and functional testing into automation engineering,
+          API testing and modern end-to-end automation. I have worked extensively with Java,
+          Selenium, Cucumber BDD, REST APIs and API automation, and currently work with
+          Playwright and TypeScript for banking application automation.
+        </p>
+      </div>
+      <div class="card reveal">
+        <div class="label">QA Philosophy</div>
+        <h3>Build confidence before release.</h3>
+        <p>
+          For me, good QA means understanding the product, identifying risk early,
+          reducing repetitive effort through automation and helping deliver a product
+          that users can trust.
+        </p><br>
+        <p class="fade-white">
+          “My goal is to release products with minimal issues while providing users
+          with a reliable, comfortable and as-close-to-flawless-as-possible experience.”
+        </p>
+      </div>
+    </div>
+
+    <div class="auto-grid reveal" id="autoGrid">
+      <article class="auto-card" data-tip="Modern browser automation using Playwright and TypeScript, including fixtures, hooks, POM, parallel execution and tracing.">
+        <div class="icon">◈</div><h3>Modern Automation</h3>
+        <p>Playwright + TypeScript for current E2E banking automation.</p>
+      </article>
+      <article class="auto-card" data-tip="Reusable automation components, page classes, API utilities, test-data utilities, reporting, assertions and configuration.">
+        <div class="icon">⌘</div><h3>Framework Engineering</h3>
+        <p>Reusable components and framework improvements.</p>
+      </article>
+      <article class="auto-card" data-tip="REST API validation covering status codes, response body, response time, headers, JSON fields, schema, authentication and data.">
+        <div class="icon">⇄</div><h3>API Quality</h3>
+        <p>REST API testing and automation across service-level behaviour.</p>
+      </article>
+      <article class="auto-card" data-tip="Product QA across Smart TVs, Smart Sticks, Soundbars and Cube devices, including Live TV, playback, networking and device interactions.">
+        <div class="icon">▣</div><h3>Product Quality</h3>
+        <p>Large-scale device and streaming product testing.</p>
+      </article>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><strong>7.5+</strong><span>Years QA</span></div>
+      <div class="stat"><strong>5.5</strong><span>Years Java</span></div>
+      <div class="stat"><strong>4</strong><span>Years Selenium</span></div>
+      <div class="stat"><strong>6</strong><span>Years Cucumber BDD</span></div>
+      <div class="stat"><strong>1+</strong><span>Year API Automation</span></div>
+      <div class="stat"><strong>3.5 mo</strong><span>TypeScript</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-kicker reveal">02 / Career</div>
+    <h2 class="section-title reveal">From product QA to <span>SDET.</span></h2>
+    <p class="section-copy reveal">
+      A progression from manual and product-focused quality engineering into Selenium/Java,
+      API automation and modern Playwright/TypeScript automation.
+    </p>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <span class="timeline-dot"></span>
+        <div class="timeline-head">
+          <div>
+            <div class="timeline-company">TCS</div>
+            <div class="timeline-role">IT Analyst — C2 Grade · Citi Project</div>
+          </div>
+          <div class="timeline-date">CURRENT · ~6 MONTHS</div>
+        </div>
+        <p class="timeline-desc">
+          Individual Contributor automating banking applications E2E using Playwright and
+          TypeScript with Citi's internally used Fast hybrid framework.
+          Responsibilities include test cases, locators, test data and framework components.
+        </p>
+        <div class="tags">
+          <span class="tag">Playwright</span><span class="tag">TypeScript</span>
+          <span class="tag">Fixtures</span><span class="tag">Hooks</span>
+          <span class="tag">POM</span><span class="tag">Parallel Execution</span>
+          <span class="tag">Network Interception</span><span class="tag">API Testing</span>
+          <span class="tag">GitHub</span><span class="tag">Lightspeed</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <span class="timeline-dot"></span>
+        <div class="timeline-head">
+          <div>
+            <div class="timeline-company">Capgemini</div>
+            <div class="timeline-role">Senior Test Automation Consultant · Barclays Project</div>
+          </div>
+          <div class="timeline-date">JAN 2025 — AUG 2025</div>
+        </div>
+        <p class="timeline-desc">
+          Focused on REST API functional testing and automation, test-case and test-script
+          creation, sprint-level API automation, API smoke testing and Selenium-based
+          automation for test-data creation. Worked closely with developers.
+        </p>
+        <div class="tags">
+          <span class="tag">Java</span><span class="tag">REST API</span>
+          <span class="tag">REST Assured</span><span class="tag">Postman</span>
+          <span class="tag">Swagger</span><span class="tag">Selenium</span>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <span class="timeline-dot"></span>
+        <div class="timeline-head">
+          <div>
+            <div class="timeline-company">Amazon</div>
+            <div class="timeline-role">Senior Associate Quality Services · Fire TV</div>
+          </div>
+          <div class="timeline-date">SEP 2018 — DEC 2024</div>
+        </div>
+        <p class="timeline-desc">
+          Manual and automation testing across Fire TV Smart TVs, Smart Sticks, Soundbars
+          and Cube devices. Covered Live TV streaming, channel switching, playback,
+          network behaviour, remote/device interactions, third-party applications and
+          security testing across EU/UK, India and Japan.
+        </p>
+        <div class="tags">
+          <span class="tag">Java</span><span class="tag">Selenium</span>
+          <span class="tag">Cucumber BDD</span><span class="tag">Functional</span>
+          <span class="tag">Regression</span><span class="tag">E2E</span>
+          <span class="tag">Compatibility</span><span class="tag">Accessibility</span>
+          <span class="tag">Performance</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-kicker reveal">03 / Featured Work</div>
+    <h2 class="section-title reveal">Projects with <span>depth.</span></h2>
+    <p class="section-copy reveal">
+      Hover for quick context or open a project to see the detailed responsibilities,
+      technologies and testing scope.
+    </p>
+
+    <div class="project-grid">
+
+      <article class="card project reveal">
+        <div>
+          <div class="project-top"><span class="project-num">01 — CURRENT</span><span class="project-badge">BANKING</span></div>
+          <h3>Citi</h3><div class="company">TCS · E2E Automation</div>
+          <p>
+            Banking application automation using Playwright, TypeScript and the Fast hybrid
+            framework. Individual contributor focused on reusable automation and framework components.
+          </p>
+          <div class="tags"><span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Fast</span><span class="tag">POM</span></div>
+        </div>
+        <button class="btn details-btn" data-modal="citi">View detailed case study →</button>
+      </article>
+
+      <article class="card project reveal">
+        <div>
+          <div class="project-top"><span class="project-num">02 — API</span><span class="project-badge">BARCLAYS</span></div>
+          <h3>REST API Automation</h3><div class="company">Capgemini · Barclays</div>
+          <p>
+            Functional REST API testing and automation with validation of status codes,
+            response data, headers, schema, authentication, timing and database data.
+          </p>
+          <div class="tags"><span class="tag">Java</span><span class="tag">REST Assured</span><span class="tag">Postman</span></div>
+        </div>
+        <button class="btn details-btn" data-modal="barclays">View detailed case study →</button>
+      </article>
+
+      <article class="card project reveal">
+        <div>
+          <div class="project-top"><span class="project-num">03 — PRODUCT</span><span class="project-badge">FIRE TV</span></div>
+          <h3>Amazon Fire TV</h3><div class="company">Amazon · Product QA</div>
+          <p>
+            Device and streaming product QA across Smart TVs, sticks, soundbars and cubes,
+            with broad functional, release, compatibility, accessibility and performance coverage.
+          </p>
+          <div class="tags"><span class="tag">Java</span><span class="tag">Selenium</span><span class="tag">Cucumber</span></div>
+        </div>
+        <button class="btn details-btn" data-modal="firetv">View detailed case study →</button>
+      </article>
+
+      <article class="card project reveal">
+        <div>
+          <div class="project-top"><span class="project-num">04 — IMPACT</span><span class="project-badge">MI × FIRE TV</span></div>
+          <h3>India Smart TV Launch</h3><div class="company">Amazon · Release Ownership</div>
+          <p>
+            Testing ownership for Smart TV UI changes involving Mi branding and Fire OS,
+            including tiles, rows and application suggestions.
+          </p>
+          <div class="tags"><span class="tag">UI Validation</span><span class="tag">60+ Bugs</span><span class="tag">Release</span></div>
+        </div>
+        <button class="btn details-btn" data-modal="mi">View detailed case study →</button>
+      </article>
+
+      <article class="card project reveal">
+        <div>
+          <div class="project-top"><span class="project-num">05 — LEADERSHIP</span><span class="project-badge">OWNERSHIP</span></div>
+          <h3>QA Team Leadership</h3><div class="company">Amazon · 11–13 Members</div>
+          <p>
+            Work allocation, test-case and automation reviews, KT, training, productivity
+            tracking, stakeholder status, escalations and release decisions.
+          </p>
+          <div class="tags"><span class="tag">KT</span><span class="tag">Reviews</span><span class="tag">Stakeholders</span></div>
+        </div>
+        <button class="btn details-btn" data-modal="leadership">View detailed case study →</button>
+      </article>
+
+      <article class="card project reveal">
+        <div>
+          <div class="project-top"><span class="project-num">06 — FRAMEWORK</span><span class="project-badge">AUTOMATION</span></div>
+          <h3>Framework Engineering</h3><div class="company">Reusable QA Components</div>
+          <p>
+            Reusable methods, page classes, API utilities, test-data utilities, reporting,
+            assertions, configuration and framework improvements.
+          </p>
+          <div class="tags"><span class="tag">POM</span><span class="tag">Hybrid</span><span class="tag">Data Driven</span></div>
+        </div>
+        <button class="btn details-btn" data-modal="framework">View detailed case study →</button>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-kicker reveal">04 / Technical Profile</div>
+    <h2 class="section-title reveal">Tools I use to <span>engineer quality.</span></h2>
+
+    <div class="skill-filter reveal">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="ui">UI Automation</button>
+      <button class="filter" data-filter="api">API</button>
+      <button class="filter" data-filter="framework">Framework</button>
+      <button class="filter" data-filter="process">QA / Process</button>
+      <button class="filter" data-filter="devops">CI/CD & Tools</button>
+    </div>
+
+    <div class="skill-grid" id="skillGrid">
+      <div class="skill" data-category="ui"><h4>Playwright</h4><p>Current E2E automation with TypeScript: locators, fixtures, hooks, POM, parallel execution, browser/context, screenshots, traces, network interception and assertions.</p></div>
+      <div class="skill" data-category="ui"><h4>Selenium</h4><p>4 years of UI automation experience with Java and reusable automation components.</p></div>
+      <div class="skill" data-category="ui"><h4>TypeScript</h4><p>Current automation development language for the Citi project; 3.5 months of experience provided.</p></div>
+      <div class="skill" data-category="api"><h4>REST API</h4><p>1.5 years of REST API experience with functional validation and automation.</p></div>
+      <div class="skill" data-category="api"><h4>REST Assured</h4><p>Java-based API automation and reusable API utilities.</p></div>
+      <div class="skill" data-category="api"><h4>Postman</h4><p>API testing, request/response validation and exploratory API checks.</p></div>
+      <div class="skill" data-category="api"><h4>Swagger</h4><p>API exploration and understanding of service contracts.</p></div>
+      <div class="skill" data-category="framework"><h4>Cucumber BDD</h4><p>6 years of BDD experience for readable behaviour-driven automation.</p></div>
+      <div class="skill" data-category="framework"><h4>TestNG / JUnit</h4><p>Test execution and automation organization.</p></div>
+      <div class="skill" data-category="framework"><h4>Page Object Model</h4><p>Page classes and reusable UI abstractions for maintainable automation.</p></div>
+      <div class="skill" data-category="framework"><h4>Hybrid Framework</h4><p>Experience with hybrid automation approaches and Citi's internally used Fast framework.</p></div>
+      <div class="skill" data-category="framework"><h4>Data-Driven Framework</h4><p>Test-data utilities and data-driven automation patterns.</p></div>
+      <div class="skill" data-category="process"><h4>Functional Testing</h4><p>Requirement-based validation and end-to-end functional coverage.</p></div>
+      <div class="skill" data-category="process"><h4>Regression / Smoke / Sanity</h4><p>Release-focused validation and confidence checks.</p></div>
+      <div class="skill" data-category="process"><h4>UAT / E2E / System</h4><p>Business-facing and end-to-end product validation.</p></div>
+      <div class="skill" data-category="process"><h4>Compatibility / Accessibility</h4><p>Device, platform and accessibility-focused quality validation.</p></div>
+      <div class="skill" data-category="process"><h4>Performance Testing</h4><p>Performance testing exposure from product QA work.</p></div>
+      <div class="skill" data-category="devops"><h4>GitHub</h4><p>6 years of experience and current CI/CD ecosystem usage.</p></div>
+      <div class="skill" data-category="devops"><h4>Lightspeed</h4><p>CI/CD platform used instead of Jenkins in the current Citi project.</p></div>
+      <div class="skill" data-category="devops"><h4>JIRA</h4><p>7.5+ years for issue, sprint and delivery tracking.</p></div>
+      <div class="skill" data-category="devops"><h4>Confluence</h4><p>7.5+ years for documentation and collaboration.</p></div>
+      <div class="skill" data-category="devops"><h4>TestRail</h4><p>6.5 years of test management experience.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="framework">
+  <div class="container">
+    <div class="section-kicker reveal">05 / Engineering</div>
+    <h2 class="section-title reveal">Automation architecture with <span>reusability.</span></h2>
+    <p class="section-copy reveal">
+      My framework experience covers reusable methods, page classes, utilities,
+      test data, configuration, assertions and reporting.
+    </p>
+
+    <div class="architecture reveal">
+<pre>
+<span class="g">src</span>
+ ├── test
+ │    └── Test cases / execution
+ ├── pages
+ │    └── Page Object Model
+ ├── utilities
+ │    ├── API utilities
+ │    ├── Test-data utilities
+ │    └── Reusable methods
+ ├── testdata
+ │    └── Test data management
+ ├── config
+ │    └── Environment / configuration
+ └── reports
+      └── Execution reporting
+
+<span class="g">Framework patterns:</span>
+Selenium + Java · Playwright · REST Assured · Cucumber · TestNG · JUnit
+Hybrid Framework · Data-Driven Framework · Page Object Model
+</pre>
+    </div>
+
+    <div class="grid-2" style="margin-top:22px">
+      <div class="card reveal">
+        <div class="label">Automation Development</div>
+        <h3>Reusable by design.</h3>
+        <div class="icon-list">
+          <div><b>✓</b> Reusable methods</div>
+          <div><b>✓</b> Page classes</div>
+          <div><b>✓</b> API utilities</div>
+          <div><b>✓</b> Test-data utilities</div>
+          <div><b>✓</b> Assertions</div>
+          <div><b>✓</b> Reporting</div>
+          <div><b>✓</b> Configuration</div>
+          <div><b>✓</b> Framework improvements</div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="label">Current Playwright Stack</div>
+        <h3>Fast + TypeScript + Playwright.</h3>
+        <div class="icon-list">
+          <div><b>✓</b> Locators</div>
+          <div><b>✓</b> Fixtures and hooks</div>
+          <div><b>✓</b> Page Object Model</div>
+          <div><b>✓</b> Parallel execution</div>
+          <div><b>✓</b> Browser / context</div>
+          <div><b>✓</b> Screenshots and trace viewer</div>
+          <div><b>✓</b> Network interception</div>
+          <div><b>✓</b> API testing and assertions</div>
+          <div><b>✓</b> Test annotations and reports</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="impact">
+  <div class="container">
+    <div class="section-kicker reveal">06 / Impact</div>
+    <h2 class="section-title reveal">Quality measured through <span>ownership.</span></h2>
+
+    <div class="impact-grid">
+      <div class="impact reveal"><strong>60+</strong><span>bugs identified in a short-term release project</span></div>
+      <div class="impact reveal"><strong>~99%</strong><span>bug identification figure provided for that release effort</span></div>
+      <div class="impact reveal"><strong>11–13</strong><span>team members owned / coordinated</span></div>
+      <div class="impact reveal"><strong>40%</strong><span>reported sales increase associated with launch work</span></div>
+    </div>
+
+    <p class="disclaimer">
+      Portfolio metrics above are based on the project information provided for this portfolio.
+      Business-impact figures should be presented as project-reported outcomes unless independently verified.
+    </p>
+
+    <div class="grid-2" style="margin-top:25px">
+      <div class="card reveal">
+        <div class="label">Mi × Fire TV · India</div>
+        <h3>Testing ownership under a short release timeline.</h3>
+        <p>
+          Took ownership of testing for Smart TV branding/UI changes involving Mi collaboration
+          and Fire OS. Compared the existing Mi-branded TV experience with Fire OS and contributed
+          to validation of tiles, rows and application suggestions. Identified 60+ bugs during
+          the short-term release effort.
+        </p>
+      </div>
+      <div class="card reveal">
+        <div class="label">Fire TV · Product Quality</div>
+        <h3>From defect discovery to release confidence.</h3>
+        <p>
+          Product QA experience included Live TV, playback, channel switching, networking,
+          device/remote interactions, third-party applications, security, compatibility,
+          accessibility and performance testing.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-kicker reveal">07 / Leadership</div>
+    <h2 class="section-title reveal">Ownership beyond <span>test execution.</span></h2>
+    <div class="grid-2">
+      <div class="card reveal">
+        <div class="label">Team</div>
+        <h3>Leading quality activities</h3>
+        <div class="icon-list">
+          <div><b>01</b> Assign work</div>
+          <div><b>02</b> Review test cases</div>
+          <div><b>03</b> Review automation</div>
+          <div><b>04</b> Conduct KT sessions</div>
+          <div><b>05</b> Train new members</div>
+          <div><b>06</b> Track productivity</div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="label">Stakeholders</div>
+        <h3>Connecting QA to release decisions</h3>
+        <div class="icon-list">
+          <div><b>01</b> Report status to stakeholders</div>
+          <div><b>02</b> Handle escalations</div>
+          <div><b>03</b> Participate in release decisions</div>
+          <div><b>04</b> Support sprint planning</div>
+          <div><b>05</b> Participate in retrospectives</div>
+          <div><b>06</b> Maintain progressive documentation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-kicker reveal">08 / Recognition</div>
+    <h2 class="section-title reveal">Awards & <span>recognition.</span></h2>
+    <div class="award-grid">
+      <div class="award reveal"><div class="year">JUNE 2021</div><h3>Rewards & Recognition</h3><p>Individual recognition during Amazon career.</p></div>
+      <div class="award reveal"><div class="year">AUGUST 2023</div><h3>Rewards & Recognition</h3><p>Individual recognition during Amazon career.</p></div>
+      <div class="award reveal"><div class="year">2022 Q3</div><h3>Quality Production Award</h3><p>UK launch event recognition.</p></div>
+      <div class="award reveal"><div class="year">2024</div><h3>Top Tester Award</h3><p>Bug Bash recognition.</p></div>
+      <div class="award reveal"><div class="year">INDIVIDUAL</div><h3>Most Bugs Identified</h3><p>Recognition for individual defect-finding contribution.</p></div>
+      <div class="award reveal"><div class="year">INDIVIDUAL</div><h3>Quick Release / Bug-Free Product</h3><p>Recognition for quality contribution during a rapid release.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-kicker reveal">09 / Future</div>
+    <h2 class="section-title reveal">The next chapter: <span>modern SDET.</span></h2>
+    <p class="section-copy reveal">
+      Continuing to expand from strong QA fundamentals into broader software engineering,
+      automation architecture and modern delivery practices.
+    </p>
+    <div class="roadmap">
+      <div class="road reveal"><span>01</span><h4>Advanced Java</h4><p>Strengthen programming depth.</p></div>
+      <div class="road reveal"><span>02</span><h4>Playwright</h4><p>Deepen modern browser automation.</p></div>
+      <div class="road reveal"><span>03</span><h4>API Automation</h4><p>Expand service-level automation.</p></div>
+      <div class="road reveal"><span>04</span><h4>CI/CD + Docker</h4><p>Build stronger engineering pipelines.</p></div>
+      <div class="road reveal"><span>05</span><h4>Cloud</h4><p>Expand execution and infrastructure skills.</p></div>
+      <div class="road reveal"><span>06</span><h4>AI in Testing</h4><p>Explore AI-assisted quality engineering.</p></div>
+      <div class="road reveal"><span>07</span><h4>Performance</h4><p>Deepen non-functional testing.</p></div>
+      <div class="road reveal"><span>08</span><h4>Accessibility</h4><p>Build inclusive quality practices.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div class="section-kicker">10 / Connect</div>
+      <h2>Let's build <span class="neon">quality software.</span></h2>
+      <p>
+        Interested in SDET, automation or quality engineering opportunities?
+        Explore my professional profiles and work.
+      </p>
+      <div class="socials">
+        <a class="social" href="https://www.linkedin.com/in/shabeer-baksha-bs-1904a8164" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="social" href="https://github.com/shabaksha96" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="social" href="#home">Back to top ↑</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">© 2026 Shabeer Baksha BS · SDET / Software Quality Engineer</div>
+</footer>
+
+<div class="hover-tip" id="hoverTip"></div>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div>
+        <div class="section-kicker" id="modalKicker">Case Study</div>
+        <h2 id="modalTitle">Project</h2>
+      </div>
+      <button class="close" id="closeModal" aria-label="Close">×</button>
+    </div>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+/* Mobile menu */
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>navLinks.classList.remove('open'));
+});
+
+/* Scroll reveal */
+const revealObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+/* Active navigation */
+const sections = [...document.querySelectorAll('section[id]')];
+const navAnchors = [...document.querySelectorAll('.nav-links a')];
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY+120;
+  let current='';
+  sections.forEach(s=>{if(y>=s.offsetTop) current=s.id});
+  navAnchors.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+},{passive:true});
+
+/* Auto-moving highlight tiles — changes every 3 seconds */
+const autoCards=[...document.querySelectorAll('.auto-card')];
+let autoIndex=0;
+function rotateAutoCards(){
+  autoCards.forEach(c=>c.classList.remove('active'));
+  autoCards[autoIndex].classList.add('active');
+  autoIndex=(autoIndex+1)%autoCards.length;
+}
+rotateAutoCards();
+setInterval(rotateAutoCards,3000);
+
+/* Hover detail popups */
+const tip=document.getElementById('hoverTip');
+document.querySelectorAll('[data-tip]').forEach(el=>{
+  el.addEventListener('mouseenter',e=>{
+    tip.textContent=el.dataset.tip;
+    tip.style.display='block';
+  });
+  el.addEventListener('mousemove',e=>{
+    tip.style.left=(e.clientX+16)+'px';
+    tip.style.top=(e.clientY+16)+'px';
+  });
+  el.addEventListener('mouseleave',()=>tip.style.display='none');
+});
+
+/* Skill filters */
+document.querySelectorAll('.filter').forEach(button=>{
+  button.addEventListener('click',()=>{
+    document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+    button.classList.add('active');
+    const filter=button.dataset.filter;
+    document.querySelectorAll('.skill').forEach(skill=>{
+      skill.style.display=(filter==='all'||skill.dataset.category===filter)?'block':'none';
+    });
+  });
+});
+
+/* Project modal */
+const modal=document.getElementById('modal');
+const modalTitle=document.getElementById('modalTitle');
+const modalKicker=document.getElementById('modalKicker');
+const modalContent=document.getElementById('modalContent');
+
+const details={
+  citi:{
+    kicker:'TCS · CITI · CURRENT',
+    title:'Citi — End-to-End Banking Automation',
+    html:`
+      <p><strong>Role:</strong> IT Analyst — C2 Grade · Individual Contributor</p>
+      <p><strong>Focus:</strong> Automating banking applications E2E using Playwright + TypeScript with Citi's internally used Fast hybrid framework.</p>
+      <ul>
+        <li>Develop and maintain E2E automated test cases.</li>
+        <li>Create and maintain reliable Playwright locators.</li>
+        <li>Create and manage automation test data.</li>
+        <li>Contribute to framework components and improvements.</li>
+        <li>Use Page Object Model, fixtures and hooks.</li>
+        <li>Support parallel execution and browser/context management.</li>
+        <li>Use screenshots and Trace Viewer for debugging.</li>
+        <li>Use network interception where required.</li>
+        <li>Perform API testing within the automation ecosystem.</li>
+        <li>Implement assertions, annotations and reporting.</li>
+        <li>Work with GitHub and Lightspeed in the CI/CD workflow.</li>
+      </ul>
+      <p><strong>Playwright areas:</strong> Locators · Fixtures · Hooks · POM · Parallel execution · Browser/context · Screenshots · Trace Viewer · Network interception · API testing · Assertions · Test annotations · Reports.</p>`
+  },
+  barclays:{
+    kicker:'CAPGEMINI · BARCLAYS · API',
+    title:'Barclays — REST API Automation',
+    html:`
+      <p><strong>Role:</strong> Senior Test Automation Consultant</p>
+      <p>Focused on REST API functional testing and automation, including sprint-level automation and API smoke testing.</p>
+      <ul>
+        <li>Test-case creation and API test-script development.</li>
+        <li>REST API automation.</li>
+        <li>API smoke testing.</li>
+        <li>Close collaboration with developers.</li>
+        <li>Selenium automation for test-data creation.</li>
+      </ul>
+      <p><strong>Validation:</strong> Status codes · Response body · Response time · Headers · JSON fields · Schema · Authentication · Request/response data · Database validation.</p>
+      <p><strong>Tools:</strong> Java · REST Assured · Postman · Swagger.</p>`
+  },
+  firetv:{
+    kicker:'AMAZON · FIRE TV · PRODUCT QA',
+    title:'Amazon Fire TV — Product Quality Engineering',
+    html:`
+      <p><strong>Role:</strong> Senior Associate Quality Services</p>
+      <p>Worked across manual and automation testing for Fire TV products and streaming experiences.</p>
+      <p><strong>Devices:</strong> Smart TV · Smart Stick · Soundbar · Cube.</p>
+      <p><strong>Product areas:</strong> Third-party applications · Live TV streaming · Channel switching · Playback · Network · Remote/device interactions · Security.</p>
+      <p><strong>Testing:</strong> Functional · Regression · Smoke · Sanity · UAT · E2E · System · Compatibility · Accessibility · Performance.</p>
+      <p><strong>Regions:</strong> EU/UK · India · Japan.</p>
+      <p><strong>Automation:</strong> New scripts · Reusable methods · Page classes · API utilities · Test-data utilities · Reporting · Assertions · Configuration · Framework improvements.</p>`
+  },
+  mi:{
+    kicker:'AMAZON · MI × FIRE TV · INDIA',
+    title:'Mi × Fire TV — Smart TV Launch',
+    html:`
+      <p><strong>Ownership:</strong> Testing owner for Smart TV IN-region branding/UI work involving Mi collaboration and Fire OS.</p>
+      <ul>
+        <li>Compared the existing Mi-branded TV experience with Fire OS.</li>
+        <li>Contributed to validation of tiles and rows.</li>
+        <li>Validated application suggestion areas.</li>
+        <li>Took ownership of testing during a short-term release project.</li>
+        <li>Identified 60+ bugs.</li>
+        <li>Project information provided for this portfolio reports approximately 99% bug identification.</li>
+        <li>Release went live without delay according to the project information provided.</li>
+      </ul>
+      <p><strong>Business context:</strong> The provided project information also associates this launch work with a reported 40% sales increase. This should be presented as a project-reported business outcome unless independently verified.</p>`
+  },
+  leadership:{
+    kicker:'OWNERSHIP · LEADERSHIP',
+    title:'QA Team Leadership & Release Ownership',
+    html:`
+      <p>Beyond hands-on testing, I have taken ownership of team and release activities.</p>
+      <ul>
+        <li>Assigned work and tracked productivity.</li>
+        <li>Reviewed test cases and automation.</li>
+        <li>Conducted knowledge-transfer sessions.</li>
+        <li>Trained new team members.</li>
+        <li>Reported status to stakeholders.</li>
+        <li>Handled escalations.</li>
+        <li>Participated in release decisions.</li>
+        <li>Participated in daily Scrum, sprint planning and retrospectives.</li>
+      </ul>
+      <p><strong>Team scope provided:</strong> 11–13 members.</p>`
+  },
+  framework:{
+    kicker:'AUTOMATION · FRAMEWORK ENGINEERING',
+    title:'Reusable Automation Framework Engineering',
+    html:`
+      <p>My automation development work focuses on reusable components rather than isolated scripts.</p>
+      <ul>
+        <li>Reusable methods</li>
+        <li>Page classes</li>
+        <li>API utilities</li>
+        <li>Test-data utilities</li>
+        <li>Reporting</li>
+        <li>Assertions</li>
+        <li>Configuration</li>
+        <li>Framework improvements</li>
+      </ul>
+      <p><strong>Patterns and technologies:</strong> Selenium + Java · Playwright · REST Assured · Cucumber · TestNG · JUnit · Hybrid framework · Data-driven framework · Page Object Model.</p>`
+  }
+};
+
+document.querySelectorAll('[data-modal]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const d=details[btn.dataset.modal];
+    if(!d)return;
+    modalKicker.textContent=d.kicker;
+    modalTitle.textContent=d.title;
+    modalContent.innerHTML=d.html;
+    modal.classList.add('show');
+    document.body.style.overflow='hidden';
+  });
+});
+function closeModal(){
+  modal.classList.remove('show');
+  document.body.style.overflow='';
+}
+document.getElementById('closeModal').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* Subtle cursor glow */
+const glow=document.createElement('div');
+glow.style.cssText='position:fixed;width:220px;height:220px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(183,255,0,.055),transparent 65%);transform:translate(-50%,-50%);z-index:-1;';
+document.body.appendChild(glow);
+window.addEventListener('mousemove',e=>{
+  glow.style.left=e.clientX+'px';
+  glow.style.top=e.clientY+'px';
+},{passive:true});
+</script>
+
+</body>
+</html>
